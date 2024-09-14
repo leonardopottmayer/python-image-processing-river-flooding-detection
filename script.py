@@ -66,7 +66,7 @@ show_image('12 - Imagem período de estiagem - Binarizada', binary_dry, '12 - Im
 
 # Subtração das imagens binarizadas para identificar inundações.
 flooded_areas = cv2.subtract(binary_rainy, binary_dry)
-show_image('13 - Áreas Inundadas', flooded_areas, '13 - Áreas Inundadas.png')
+show_image('13 - Áreas inundadas', flooded_areas, '13 - Áreas inundadas.png')
 
 # Converter a imagem de estiagem para colorida para sobrepor as áreas inundadas.
 image_colored_dry = cv2.cvtColor(equalized_image_dry, cv2.COLOR_GRAY2BGR)
@@ -79,7 +79,7 @@ red[:, :] = [0, 0, 255]  # BGR para vermelho (0 azul, 0 verde e 255 vermelho).
 flood_mask = flooded_areas == 255
 overlapping_dry = np.where(flood_mask[:, :, None], red, image_colored_dry)
 
-show_image('14 - Áreas Inundadas sobrepostas', overlapping_dry, '14 - Áreas Inundadas sobrepostas.png')
+show_image('14 - Áreas inundadas sobrepostas', overlapping_dry, '14 - Áreas inundadas sobrepostas.png')
 
 # Cálculo da área inundada.
 flooded_area_pixels = np.sum(flooded_areas == 255)
